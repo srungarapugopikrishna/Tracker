@@ -39,8 +39,8 @@
 	        $(".dropdown-menu option").click(function(){
 	        	var selText = $(this).text();
 	        	var selVal = $(this).val();
-	        	$(".btn:first-child").text($(this).text());
-	        	alert(selText+'-'+selVal);
+	        	$("#displayButton").text($(this).text());
+//	        	alert(selText+'-'+selVal);
 	        });
 		});
 	  </script>
@@ -49,7 +49,7 @@
 
 	<div class="container">
 	  <div class="btn-group">
-	    <button class="btn">Please Select From List</button>
+	    <button id="displayButton" class="btn">Please Select From List</button>
 	    <button class="btn dropdown-toggle" data-toggle="dropdown">
 	    <span class="caret"></span>
 	   </button>
