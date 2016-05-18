@@ -31,17 +31,23 @@
 
 	//		alert(cities({name:"New York"}).first().state);
 
+            var options = $("#Items_List");
 
-	        $(function(){
-	  
-	  $(".dropdown-menu li a").click(function(){
-	    
-	    $(".btn:first-child").text($(this).text());
-	     $(".btn:first-child").val($(this).text());
-	  });
-
-	});
-
+		    options.append("<option value=I1>Item I</option>");
+		    options.append("<option value='I2'>Item 2</</option>");
+   		    options.append("<option value='I3'>Item 3</</option>");
+	        // $(function(){
+	        // 	$(".dropdown-menu li a").click(function(){
+	        // 		var txt=$(".btn:first-child").text($(this).text());
+	        // 		var val=$(".btn:first-child").val($(this).text());
+	        // 		console.log(txt);
+	        // 	});
+	        // });
+	        $(".dropdown-menu option").click(function(){
+	        	var selText = $(this).text();
+	        	var selVal = $(this).val();
+	        	alert(selText+'-'+selVal);
+	        });
 		});
 	  </script>
 	</head>
@@ -53,12 +59,9 @@
 	    <button class="btn dropdown-toggle" data-toggle="dropdown">
 	    <span class="caret"></span>
 	   </button>
-	 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-	   <li><a >Item I</a></li>
-	   <li><a >Item II</a></li>
-	   <li><a >Item III</a></li>
-	   <li class="divider"></li>
-	   <li><a tabindex="-1" href="#">Other</a></li>
+	 <ul id="Items_List" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+<!--	   <li class="divider"></li>
+	   <li><a tabindex="-1" href="#">Other</a></li>  -->
 	 </ul>
 	</div>
 
