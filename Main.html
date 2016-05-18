@@ -36,16 +36,10 @@
 		    options.append("<option value=I1>Item I</option>");
 		    options.append("<option value='I2'>Item 2</</option>");
    		    options.append("<option value='I3'>Item 3</</option>");
-	        // $(function(){
-	        // 	$(".dropdown-menu li a").click(function(){
-	        // 		var txt=$(".btn:first-child").text($(this).text());
-	        // 		var val=$(".btn:first-child").val($(this).text());
-	        // 		console.log(txt);
-	        // 	});
-	        // });
 	        $(".dropdown-menu option").click(function(){
 	        	var selText = $(this).text();
 	        	var selVal = $(this).val();
+	        	$(".btn:first-child").text($(this).text());
 	        	alert(selText+'-'+selVal);
 	        });
 		});
@@ -64,7 +58,7 @@
 	   <li><a tabindex="-1" href="#">Other</a></li>  -->
 	 </ul>
 	</div>
-
+    <button type="button" id='trakerit'	class="btn btn-primary btn-md" data-toggle="modal" data-target="#traker_pane" >TRACK</button>
 	<!-- Result PANE -->
 	  <div class="modal fade" id="traker_pane" role="dialog">
 	    <div class="modal-dialog">
