@@ -25,26 +25,20 @@
    								   {TID:"Track_006",IOWNER:"User_002",SOURCE:"User_001",DEST:"User_003",DATE:"08-05-2016",STATUS:"NO"},
 								   {TID:"Track_007",IOWNER:"User_002",SOURCE:"User_003",DEST:"User_002",DATE:"12-05-2016",STATUS:"YES"}]);
  			
-
-
-	//		cities.insert({name:"Portland",state:"OR"});
-
-	//		cities({name:"New York"}).update({state:"NY"});
-
-	//		alert(cities({name:"New York"}).first().state);	
-
-            var options = $("#Items_List");
+           var options = $("#Items_List");
             ItemDetails().each(function(r){
-// 				alert(r.INAME);
  				options.append("<option value="+r.IID+">"+r.INAME+"</option>");
 	    	    $(".dropdown-menu option").click(function(){
 	        		var selText = $(this).text();
 	        		var selVal = $(this).val();
 	        		$("#displayButton").text($(this).text());
+	        		$("#displayButton").val($(this).val());
+
  				});
-		    
-//	        	alert(selText+'-'+selVal);
-	        });
+		  	});
+		  	$("#trakerit").click(function(){
+ 
+ 		  	});
 		});
 	  </script>
 	</head>
