@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tracker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/taffy.js"></script>
+  <script>
+  $(document).ready(function() {
+ 
+		var UserDetails=TAFFY([{UID:"User_001",UNAME:"GOPI",UMAIL:"mymail@gmail.com",UMOBILE:"9666390504"},
+							  {UID:"User_002",UNAME:"KRISHNA",UMAIL:"mymail1@gmail.com",UMOBILE:"9666390505"},
+  							   {UID:"User_003",UNAME:"SGK",UMAIL:"mymail2@gmail.com",UMOBILE:"9666390506"}]);
+		var ItemDetails=TAFFY([{IID:"Item_001",INAME:"BOOK1",ITYPE:"BOOK",IPRICE:"500",IOWNER:"User_001"},
+							   {IID:"Item_002",INAME:"BOOK2",ITYPE:"BOOK",IPRICE:"600",IOWNER:"User_002"},
+							   {IID:"Item_003",INAME:"BOOK3",ITYPE:"BOOK",IPRICE:"700",IOWNER:"User_003"}]);
+		var TrackDetails=TAFFY([{TID:"Track_001",IOWNER:"User_001",SOURCE:"User_001",DEST:"User_003",DATE:"",STATUS:""},
+							   {TID:"",IOWNER:"",SOURCE:"",DEST:"",DATE:"",STATUS:""},
+							   {TID:"",IOWNER:"",SOURCE:"",DEST:"",DATE:"",STATUS:""},
+							   {TID:"",IOWNER:"",SOURCE:"",DEST:"",DATE:"",STATUS:""},
+							   {TID:"",IOWNER:"",SOURCE:"",DEST:"",DATE:"",STATUS:""},
+							   {TID:"",IOWNER:"",SOURCE:"",DEST:"",DATE:"",STATUS:""},
+							   {TID:"",IOWNER:"",SOURCE:"",DEST:"",DATE:"",STATUS:""}]);
+
+		//cities.insert({name:"Portland",state:"OR"});
+
+//		cities({name:"New York"}).update({state:"NY"});
+
+//		alert(cities({name:"New York"}).first().state);
+
+
+        $('a').click(function(){
+				var value = $(this).text();
+				alert(value);
+				$("#dropdownDisplay").text=value;
+			});
+
+	});
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <div class="dropdown">
+       <button id="dropdownDisplay" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="DropDown">
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a>HTML</a></li>
+      <li><a>CSS</a></li>
+      <li><a>JavaScript</a></li>
+    </ul>
+  </div>
+
+<!-- Result PANE -->
+  <div class="modal fade" id="traker_pane" role="dialog">
+    <div class="modal-dialog">
+    
+       <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Result</h4>
+        </div>
+        <div id="result_body" class="modal-body">
+          <p>Tracking</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- Result Pane End here -->
+   
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tracker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/taffy.js"></script>
+  <script>
+  $(document).ready(function() {
+		var i=1;
+		 $("#add_row").click(function(){
+		   $('#addr'+i).html("<td>"+ (i+1) +"</td><td><input name='Owner"+i+"' id='owner"+i+"' type='text' placeholder='Owner' class='form-control input-md'  /></td><td><input  name='Item"+i+"' id='item"+i+"' type='text' placeholder='Item'  class='form-control input-md'></td><td><input  name='Type"+i+"' id='type"+i+"' type='text' placeholder='Type'  class='form-control input-md'></td><td><input  name='Price"+i+"' id='price"+i+"' type='text' placeholder='Price'  class='form-control input-md'></td><td><input  name='date_item"+i+"' id='date_item"+i+"' type='date' class='form-control input-md'></td><td><button type='button' id='submit"+i+"' class='btn btn-default btn-md'>submit</button></td><td><button type='button' id='track1"+i+"' class='btn btn-primary btn-md' data-toggle='modal' data-target='#traker_pane'>TRACK</button></td>");
+			  $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+			  i++; 
+		  });
+		 $("#delete_row").click(function(){
+		 	 if(i>1){
+				$("#addr"+(i-1)).html('');
+				i--;
+			 }
+		 });
+		 //Collecting Data from inputs 
+		 $('#submit0').click(function(){
+				var owner=$("#owner0").val();
+				var item=$("#item0").val(); 
+				var type=$("#type0 ").val();
+				var price=$("#price0").val();
+				var date_item=$("#date_item0").val();
+				var jsonData="[{owner:"+owner+",item:"+item+",type:"+type+",price:"+price+",date_item:"+date_item+",tracker:["+"]}]"
+				alert(jsonData);
+		 });
+
+ 
+		var UserDetails=TAFFY([{UID:"User_001",UNAME:"GOPI",UMAIL:"mymail@gmail.com",UMOBILE:"9666390504"},
+							  {UID:"User_002",UNAME:"KRISHNA",UMAIL:"mymail1@gmail.com",UMOBILE:"9666390505"},
+  							   {UID:"User_003",UNAME:"SGK",UMAIL:"mymail2@gmail.com",UMOBILE:"9666390506"}]);
+		var ItemDetails=TAFFY([{IID:"Item_001",INAME:"BOOK1",ITYPE:"BOOK",IPRICE:"500",IOWNER:"User_001"},
+							   {IID:"Item_002",INAME:"BOOK2",ITYPE:"BOOK",IPRICE:"600",IOWNER:"User_002"},
+							   {IID:"Item_003",INAME:"BOOK3",ITYPE:"BOOK",IPRICE:"700",IOWNER:"User_003"}]);
+		var TrackDetails=TAFFY([{TID:"",IOWNER:"",SOURCE:"",DEST:"",DATE:"",STATUS:""},
+							   {IID:"Item_002",INAME:"BOOK2",ITYPE:"BOOK",IPRICE:"600",IOWNER:"User_002"},
+							   {IID:"Item_003",INAME:"BOOK3",ITYPE:"BOOK",IPRICE:"700",IOWNER:"User_003"}]);
+
+		cities.insert({name:"Portland",state:"OR"});
+
+		cities({name:"New York"}).update({state:"NY"});
+
+		alert(cities({name:"New York"}).first().state);
+
+
+ 
+
+	});
+  </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table table-bordered table-hover" id="tab_logic">
+                <thead>
+                    <tr >
+                        <th class="text-center">
+                            #
+                        </th>
+                        <th class="text-center">
+                            Owner
+                        </th>
+                        <th class="text-center">
+                            Item
+                        </th>
+                        <th class="text-center">
+                            Type
+                        </th>
+                        <th class="text-center">
+                            Price
+                        </th>
+                        <th class="text-center">
+                            Date
+                        </th>
+						<th class="text-center">
+                        </th>
+						<th class="text-center">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id='addr0'>
+                        <td>
+                        1
+                        </td>
+                        <td>
+                        <input type="text" name='Owner' id='owner0' placeholder='Owner' class="form-control"/>
+                        </td>
+                        <td>
+                        <input type="text" name='Item' id='item0' placeholder='Item' class="form-control"/>
+                        </td>
+                        <td>
+                        <input type="text" name='Type' id='type0' placeholder='Type' class="form-control"/>
+                        </td>
+                        <td>
+                        <input type="text" name='Price' id='price0'	placeholder='Price' class="form-control"/>
+                        </td>
+                        <td>
+                        <input type="date" name='date_item' id='date_item0' class="form-control"/>
+                        </td>
+						<td>
+						<button type="button" id='submit0'	class="btn btn-default btn-md" >submit</button>
+                        </td>						
+						<td>
+						<button type="button" id='track0'	class="btn btn-primary btn-md" data-toggle="modal" data-target="#traker_pane" >TRACK</button>
+                        </td>
+						
+                    </tr>
+                    <tr id='addr1'></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a id="add_row" class="btn btn-default pull-left">Add Row</a><a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+</div>
+
+
+<!-- Result PANE -->
+
+  <div class="modal fade" id="traker_pane" role="dialog">
+    <div class="modal-dialog">
+    
+       <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Result</h4>
+        </div>
+        <div id="result_body" class="modal-body">
+          <p>Tracking</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- Result Pane End here -->
+
+</body>
+</html>
