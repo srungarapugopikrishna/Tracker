@@ -4,10 +4,30 @@
 	  <title>Tracker</title>
 	  <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="css/bootstrap.min.css">
+	   <link rel="stylesheet" href="css/bootstrap.v3.min.css">
+	  	  <style>
+h3 {
+    font-size: 19pt;
+    color: #c0504d;
+}
+h2 {
+    font-size: 16pt;
+    color: #4d8cbf;
+}
+.modal-body {
+    max-height: 500px;
+    overflow: auto;
+}
+</style>
+<script src="js/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap.v3.min.js"></script>
+	<!--  <link rel="stylesheet" href="css/bootstrap.min.css">
 	  <script src="js/jquery.min.js"></script>
 	  <script src="js/bootstrap.min.js"></script>
-	  <script src="js/taffy.js"></script>
+	-->  <script src="js/taffy.js"></script>
+
 	  <script>
 	  $(document).ready(function() {
 	 
@@ -25,6 +45,21 @@
    								   {TID:"Track_006",IID:"Item_002",SOURCE:"User_001",DEST:"User_003",DATE:"08-05-2016",STATUS:"NO"},
 								   {TID:"Track_007",IID:"Item_002",SOURCE:"User_003",DEST:"User_002",DATE:"12-05-2016",STATUS:"YES"}]);
  			
+ 			var items=[];
+
+			function render_table(items){
+				$("#result-modal .modal-body").empty().html($( "<table>", {
+						"class": "table table-responsive table-striped",
+						html: items.join( "" )})
+					);
+					 $('.table').DataTable({
+						 // "scrollY":        "380px",
+						 "scrollCollapse": true,
+						 "paging":         true,
+						 'iDisplayLength': 25,
+					 });
+				$('#result-modal').modal();     
+			}
            var options = $("#Items_List");
             ItemDetails().each(function(r){
  				options.append("<option value="+r.IID+">"+r.INAME+"</option>");
@@ -36,12 +71,22 @@
 
  				});
 		  	});
+		  	// $("#trakerit").click(function(){
+ 		  // 		$(result_body).append("<table class='table table-bordered table-hover' id='tab_logic'><thead><tr><th class='text-center'>Source</th><th class='text-center'>Destination</th><th class='text-center'>Date</th></tr></thead><tbody>");
+ 		  // 		TrackDetails().each(function(r){
+ 		  // 			$(result_body).append("<tr><td>"+r.IID+"</td><td>"+r.SOURCE+"</td><td>"+r.DEST+"</td><td>"+r.DATE+"</td></tr>");
+ 		  // 		});
+ 		  // 			$(result_body).append("</tbody></table>");
+		  	// });
 		  	$("#trakerit").click(function(){
- 		  		$(result_body).append("<table class='table table-bordered table-hover' id='tab_logic'><thead><tr><th class='text-center'>Source</th><th class='text-center'>Destination</th><th class='text-center'>Date</th></tr></thead><tbody>");
- 		  		TrackDetails().each(function(r){
- 		  			$(result_body).append("<tr><td>"+r.IID+"</td><td>"+r.SOURCE+"</td><td>"+r.DEST+"</td><td>"+r.DATE+"</td></tr>");
+				var items=[];
+		 		items.push("<thead><tr><th>Source</th><th>Destination</th><th>Date</th></tr></thead>");
+		  		TrackDetails().each(function(r){
+				    if(r.IID==$(".dropdown-menu option").val()){
+						items.push("<tr id='"+r.IID+"'><td>"+r.SOURCE+"</td><td>"+r.DEST+"</td><td>"+r.DATE+"</td></tr>");
+					}
  		  		});
- 		  			$(result_body).append("</tbody></table>");
+				render_table(items); 
 		  	});
 		});
 	  </script>
@@ -59,8 +104,9 @@
 	   <li><a tabindex="-1" href="#">Other</a></li>  -->
 	 </ul>
 	</div>
-    <button type="button" id='trakerit'	class="btn btn-primary btn-md" data-toggle="modal" data-target="#traker_pane" >TRACK</button>
-	<!-- Result PANE -->
+<!--    <button type="button" id='trakerit'	class="btn btn-primary btn-md" data-toggle="modal" data-target="#traker_pane" >TRACK</button>
+-->     <input type="button" id="trakerit" class="btn btn-primary" value="TRACK"/>
+	<!-- Result PANE  
 	  <div class="modal fade" id="traker_pane" role="dialog">
 	    <div class="modal-dialog">
 	    
@@ -79,8 +125,20 @@
 	      
 	    </div>
 	  </div>
-	<!-- Result Pane End here -->
+	 Result Pane End here -->
 	   
+<div class="modal fade" id="result-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" style="font-family:calibri;">Result</h4>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+  </div>
+</div>
+
 	</div>
 	</body>
 	</html>
