@@ -71,13 +71,6 @@ h2 {
 
  				});
 		  	});
-		  	// $("#trakerit").click(function(){
- 		  // 		$(result_body).append("<table class='table table-bordered table-hover' id='tab_logic'><thead><tr><th class='text-center'>Source</th><th class='text-center'>Destination</th><th class='text-center'>Date</th></tr></thead><tbody>");
- 		  // 		TrackDetails().each(function(r){
- 		  // 			$(result_body).append("<tr><td>"+r.IID+"</td><td>"+r.SOURCE+"</td><td>"+r.DEST+"</td><td>"+r.DATE+"</td></tr>");
- 		  // 		});
- 		  // 			$(result_body).append("</tbody></table>");
-		  	// });
 		  	$("#trakerit").click(function(){
 				var items=[];
 		 		items.push("<thead><tr><th>Source</th><th>Destination</th><th>Date</th></tr></thead>");
@@ -100,32 +93,9 @@ h2 {
 	    <span class="caret"></span>
 	   </button>
 	 <ul id="Items_List" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-<!--	   <li class="divider"></li>
-	   <li><a tabindex="-1" href="#">Other</a></li>  -->
 	 </ul>
 	</div>
-<!--    <button type="button" id='trakerit'	class="btn btn-primary btn-md" data-toggle="modal" data-target="#traker_pane" >TRACK</button>
--->     <input type="button" id="trakerit" class="btn btn-primary" value="TRACK"/>
-	<!-- Result PANE  
-	  <div class="modal fade" id="traker_pane" role="dialog">
-	    <div class="modal-dialog">
-	    
-	       <div class="modal-content">
-	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title">Result</h4>
-	        </div>
-	        <div id="result_body" class="modal-body">
-	          <p>Tracking</p>
-	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        </div>
-	      </div>
-	      
-	    </div>
-	  </div>
-	 Result Pane End here -->
+     <input type="button" id="trakerit" class="btn btn-primary" value="TRACK"/>
 	   
 <div class="modal fade" id="result-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
