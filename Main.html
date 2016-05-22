@@ -75,7 +75,8 @@ h2 {
 				var items=[];
 		 		items.push("<thead><tr><th>Source</th><th>Destination</th><th>Date</th></tr></thead>");
 		  		TrackDetails().each(function(r){
-				    if(r.IID==$(".dropdown-menu option").val()){
+				    if(r.IID==$("#displayButton").val()){
+				    	console.log("r.IID->"+r.IID+"   dropdown->"+$("#displayButton").val());
 						items.push("<tr id='"+r.IID+"'><td>"+r.SOURCE+"</td><td>"+r.DEST+"</td><td>"+r.DATE+"</td></tr>");
 					}
  		  		});
