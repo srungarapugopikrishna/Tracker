@@ -37,13 +37,13 @@ h2 {
 			var ItemDetails=TAFFY([{IID:"Item_001",INAME:"BOOK1",ITYPE:"BOOK",IPRICE:"500",IOWNER:"User_001"},
 								   {IID:"Item_002",INAME:"BOOK2",ITYPE:"BOOK",IPRICE:"600",IOWNER:"User_002"},
 								   {IID:"Item_003",INAME:"BOOK3",ITYPE:"BOOK",IPRICE:"700",IOWNER:"User_003"}]);
-			var TrackDetails=TAFFY([{TID:"Track_001",IID:"Item_001",SOURCE:"User_001",DEST:"User_003",DATE:"						  22-04-2016",STATUS:"NO"},
-								   {TID:"Track_002",IID:"Item_001",SOURCE:"User_003",DEST:"User_002",DATE:"28-04-2016",STATUS:"NO"},
-								   {TID:"Track_003",IID:"Item_001",SOURCE:"User_002",DEST:"User_001",DATE:"16-05-2016",STATUS:"YES"},
-								   {TID:"Track_004",IID:"Item_002",SOURCE:"User_002",DEST:"User_003",DATE:"25-04-2016",STATUS:"NO"},
-								   {TID:"Track_005",IID:"Item_002",SOURCE:"User_003",DEST:"User_001",DATE:"30-04-2016",STATUS:"NO"},
-   								   {TID:"Track_006",IID:"Item_002",SOURCE:"User_001",DEST:"User_003",DATE:"08-05-2016",STATUS:"NO"},
-								   {TID:"Track_007",IID:"Item_002",SOURCE:"User_003",DEST:"User_002",DATE:"12-05-2016",STATUS:"YES"}]);
+			var TrackDetails=TAFFY([{TID:"Track_001",IID:"Item_001",SOURCE:"User_001",DEST:"User_003",DATE:new Date("2016/04/22"),STATUS:"NO"},
+								   {TID:"Track_002",IID:"Item_001",SOURCE:"User_003",DEST:"User_002",DATE:new Date("2016/04/28"),STATUS:"NO"},
+								   {TID:"Track_003",IID:"Item_001",SOURCE:"User_002",DEST:"User_001",DATE:new Date("2016/05/16"),STATUS:"YES"},
+								   {TID:"Track_004",IID:"Item_002",SOURCE:"User_002",DEST:"User_003",DATE:new Date("2016/04/25"),STATUS:"NO"},
+								   {TID:"Track_005",IID:"Item_002",SOURCE:"User_003",DEST:"User_001",DATE:new Date("2016/04/30"),STATUS:"NO"},
+   								   {TID:"Track_006",IID:"Item_002",SOURCE:"User_001",DEST:"User_003",DATE:new Date("2016/05/08"),STATUS:"NO"},
+								   {TID:"Track_007",IID:"Item_002",SOURCE:"User_003",DEST:"User_002",DATE:new Date("2016/05/12"),STATUS:"YES"}]);
  			
  			var items=[];
 
@@ -73,12 +73,9 @@ h2 {
 		  	});
 		  	$("#trakerit").click(function(){
 				var items=[];
-		 		items.push("<thead><tr><th>Source</th><th>Destination</th><th>Date</th></tr></thead>");
-		  		TrackDetails().each(function(r){
-				    if(r.IID==$("#displayButton").val()){
-				    	console.log("r.IID->"+r.IID+"   dropdown->"+$("#displayButton").val());
-						items.push("<tr id='"+r.IID+"'><td>"+r.SOURCE+"</td><td>"+r.DEST+"</td><td>"+r.DATE+"</td></tr>");
-					}
+		 		items.push("<thead><tr><th>TID</th><th>Source</th><th>Destination</th><th>Date</th></tr></thead>");
+ 		  		  		TrackDetails({IID:$("#displayButton").val()}).each(function(r){
+						items.push("<tr id='"+r.IID+"'><td>"+r.TID+"</td><td>"+r.SOURCE+"</td><td>"+r.DEST+"</td><td>"+r.DATE+"</td></tr>");
  		  		});
 				render_table(items); 
 		  	});
